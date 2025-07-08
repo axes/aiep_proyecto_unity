@@ -1,0 +1,7 @@
+RECIBÍ ESTE ERROR AL DÍA SIGUIENTE DE ABRIR
+
+
+Please move the project folder somewhere readable and writable.
+
+
+fix: https://discussions.unity.com/t/please-move-the-project-folder-somewhere-readable-and-writable-no-matter-where-i-put-it/650351
