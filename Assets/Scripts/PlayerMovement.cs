@@ -36,8 +36,6 @@ public class PlayerMovement : MonoBehaviour
 
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-     
-
         CheckGround();       
 
         // Salto   

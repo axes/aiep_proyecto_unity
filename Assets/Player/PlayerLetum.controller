@@ -355,7 +355,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: letum_idle
-  m_Speed: 0.5
+  m_Speed: 0.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4417730125412448065}
@@ -470,16 +470,16 @@ AnimatorStateMachine:
     m_Position: {x: 30, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2584774852204556673}
-    m_Position: {x: 360, y: 180, z: 0}
+    m_Position: {x: 440, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5124599789376926606}
-    m_Position: {x: 390, y: 270, z: 0}
+    m_Position: {x: 440, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5362145667012268029}
-    m_Position: {x: 420, y: 350, z: 0}
+    m_Position: {x: 440, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5154960309189164651}
-    m_Position: {x: 360, y: 420, z: 0}
+    m_Position: {x: 440, y: 430, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
