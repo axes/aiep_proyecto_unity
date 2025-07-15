@@ -1,13 +1,12 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class PlayerLetum : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
+    private bool invulnerable = false;
+    public float tiempoInvulnerable = 1f;
+    
     // Update is called once per frame
     void Update()
     {
@@ -15,5 +14,44 @@ public class PlayerLetum : MonoBehaviour
         {
             FadeController.Instance.FadeToBlackThenRespawn(gameObject);
         }
+    }
+
+    public void RecibirDano(float cantidad)
+    {
+        EnergiaController energia = FindAnyObjectByType<EnergiaController>();
+        if (energia != null)
+        {
+            energia.BajarEnergia(cantidad);
+        }
+
+        StartCoroutine(InvulnerabilidadTemporal());
+    }
+
+    private IEnumerator InvulnerabilidadTemporal()
+    {
+        invulnerable = true;
+
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>(); // Asegúrate que apunte al sprite correcto
+        float elapsed = 0f;
+        float blinkInterval = 0.1f;
+
+        while (elapsed < tiempoInvulnerable)
+        {
+            if (sr != null)
+                sr.enabled = !sr.enabled;
+
+            yield return new WaitForSeconds(blinkInterval);
+            elapsed += blinkInterval;
+        }
+
+        if (sr != null)
+            sr.enabled = true; // Asegura que termine visible
+
+        invulnerable = false;
+    }
+
+    public bool EstaInvulnerable()
+    {
+        return invulnerable;
     }
 }
