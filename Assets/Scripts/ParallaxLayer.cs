@@ -8,6 +8,9 @@ public class ParallaxLayer : MonoBehaviour
 
     void Start()
     {
+        if (cameraTransform == null)
+            cameraTransform = Camera.main.transform;
+
         lastCameraPos = cameraTransform.position;
     }
 
@@ -17,5 +20,4 @@ public class ParallaxLayer : MonoBehaviour
         transform.position += new Vector3(delta.x * parallaxFactor, delta.y * parallaxFactor, 0);
         lastCameraPos = cameraTransform.position;
     }
-    
 }
