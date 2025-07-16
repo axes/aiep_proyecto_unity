@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3c995aa96626e40bd15ec863316384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonidoPowerup: {fileID: 8300000, guid: 714202a6f2108044989ac3cbb3792700, type: 3}
   cantidadEnergia: 20
   efectoExplosion: {fileID: 1692466624393769319, guid: 29257de70123baf4dbd50ff447798976, type: 3}
 --- !u!114 &265884718104516387

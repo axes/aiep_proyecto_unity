@@ -6,12 +6,19 @@ public class PlayerLetum : MonoBehaviour
 {
     private bool invulnerable = false;
     public float tiempoInvulnerable = 1f;
+    public AudioClip sonidoDano;
+    public AudioClip sonidoCaida;
+
+
     
     // Update is called once per frame
     void Update()
     {
         if (transform.position.y < -10f)
         {
+             if (sonidoCaida != null)
+                AudioSource.PlayClipAtPoint(sonidoCaida, transform.position);
+
             FadeController.Instance.FadeToBlackThenRespawn(gameObject);
         }
     }
@@ -22,7 +29,12 @@ public class PlayerLetum : MonoBehaviour
         if (energia != null)
         {
             energia.BajarEnergia(cantidad);
+            if (sonidoDano != null)
+            {
+                AudioSource.PlayClipAtPoint(sonidoDano, transform.position);
+            }
         }
+
 
         StartCoroutine(InvulnerabilidadTemporal());
     }

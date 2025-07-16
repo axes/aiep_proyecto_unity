@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using System;
 
 public class FadeController : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class FadeController : MonoBehaviour
 
     private void Awake()
     {
+
         Instance = this;
     }
 
@@ -35,5 +38,16 @@ public class FadeController : MonoBehaviour
             fadeImage.color = color;
             yield return null;
         }
+    }
+
+    public void FadeToBlackThen(System.Action accionDespues)
+    {
+        StartCoroutine(FadeThenAction(accionDespues));
+    }
+
+    private IEnumerator FadeThenAction(System.Action accionDespues)
+    {
+        yield return StartCoroutine(Fade(1)); // fade out
+        accionDespues?.Invoke();
     }
 }

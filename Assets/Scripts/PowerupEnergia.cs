@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PowerupEnergia : MonoBehaviour
 {
+    public AudioClip sonidoPowerup;
     public float cantidadEnergia = 20f;
     public GameObject efectoExplosion; // ← este lo asignas desde el editor
 
@@ -13,6 +14,7 @@ public class PowerupEnergia : MonoBehaviour
             if (energia != null)
             {
                 energia.BajarEnergia(-cantidadEnergia);
+                AudioSource.PlayClipAtPoint(sonidoPowerup, transform.position);
             }
 
             // Instanciar la explosión en la posición visual del powerup

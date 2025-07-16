@@ -10,6 +10,9 @@ public class EnergiaController : MonoBehaviour
     public float energiaActual;
     public float velocidadAgotamiento = 5f;
 
+    public AudioClip sonidoMuerte;
+
+
     // agregar sprite de personaje para cambiar su alfa
     // y que se vea como si se estuviera agotando
      public SpriteRenderer personaje;
@@ -62,7 +65,15 @@ public class EnergiaController : MonoBehaviour
 
     void ReiniciarNivel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (sonidoMuerte != null)
+        {
+            AudioSource.PlayClipAtPoint(sonidoMuerte, transform.position);
+        }
+
+        FadeController.Instance.FadeToBlackThen(() =>
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        });
     }
 
     void UpdateColor(Slider s)

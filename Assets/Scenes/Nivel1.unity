@@ -2902,6 +2902,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiempoInvulnerable: 1
+  sonidoDano: {fileID: 8300000, guid: 8cf2a272d92df2747bc47c6a9f9ee692, type: 3}
+  sonidoCaida: {fileID: 8300000, guid: 2db2ac474543ea64197da9a70858a2ba, type: 3}
 --- !u!1001 &1835222989
 PrefabInstance:
   m_ObjectHideFlags: 0
