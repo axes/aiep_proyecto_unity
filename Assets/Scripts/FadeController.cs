@@ -3,10 +3,14 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System;
+using Unity.Cinemachine;
+
 
 public class FadeController : MonoBehaviour
 {
     public static FadeController Instance;
+
+
 
     public Image fadeImage;
     public float fadeSpeed = 1f;
@@ -25,7 +29,22 @@ public class FadeController : MonoBehaviour
     IEnumerator FadeAndRespawn(GameObject player)
     {
         yield return StartCoroutine(Fade(1)); // fade out
+
         player.transform.position = GameManager.Instance.GetCheckpoint();
+
+        // 🔄 Reiniciar energía si tiene el script
+        EnergiaController energia = FindAnyObjectByType<EnergiaController>();
+        if (energia != null)
+        {
+            energia.ReiniciarEnergia();
+        }
+
+        Unity.Cinemachine.CinemachineCamera cam = FindAnyObjectByType<Unity.Cinemachine.CinemachineCamera>();
+        if (cam != null)
+        {
+            cam.OnTargetObjectWarped(player.transform, Vector3.zero);
+        }
+
         yield return StartCoroutine(Fade(0)); // fade in
     }
 

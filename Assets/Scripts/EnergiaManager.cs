@@ -63,6 +63,20 @@ public class EnergiaController : MonoBehaviour
         energiaSlider.value = energiaActual;
     }
 
+public void ReiniciarEnergia()
+{
+    energiaActual = energiaMaxima;
+    energiaSlider.value = energiaActual;
+
+    // Restaurar visibilidad del personaje
+    if (personaje != null)
+    {
+        Color color = personaje.color;
+        color.a = 1f;
+        personaje.color = color;
+    }
+}
+
     void ReiniciarNivel()
     {
         if (sonidoMuerte != null)
@@ -70,10 +84,17 @@ public class EnergiaController : MonoBehaviour
             AudioSource.PlayClipAtPoint(sonidoMuerte, transform.position);
         }
 
-        FadeController.Instance.FadeToBlackThen(() =>
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        });
+        GameObject jugador = GameObject.FindWithTag("Player");
+
+            if (jugador != null)
+            {
+                FadeController.Instance.FadeToBlackThenRespawn(jugador);
+            }
+            else
+            {
+                Debug.LogError("No se encontró el jugador con tag Player.");
+            }
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void UpdateColor(Slider s)
